@@ -1,10 +1,16 @@
 import React from "react"
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableHighlight } from 'react-native'
 
 const GoalItem = props => {
-  return <View style={styles.listItem}>
-    <Text >{props.value}</Text>
-  </View>
+  return (
+    <TouchableHighlight
+      underlayColor={'blue'}
+    >
+      <View style={styles.listItem}>
+        <Text >{props.value}</Text>
+      </View>
+    </TouchableHighlight>
+  )
 }
 
 export default GoalItem

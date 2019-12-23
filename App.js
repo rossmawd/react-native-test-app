@@ -11,7 +11,7 @@ export default function App() {
     setEnteredGoal(enteredText);
   }
 
-  //ONLY console.log if the courseGoals have changed
+  //this will ONLY console.log if the courseGoals have changed:
   useEffect(() => {
     console.log(courseGoals);
   }, [courseGoals]);
@@ -30,9 +30,13 @@ export default function App() {
       </View>
 
       <View />
-      <FlatList data={courseGoals} renderItem={itemData => (
-        <GoalItem value={itemData.item.value} />
-      )} />
+      <FlatList
+        data={courseGoals}
+        renderItem={itemData => (<GoalItem value={itemData.item.value}
+          onPress={() => console.log("WHY no worky!")}
+        />
+        )}
+      />
     </View>
   );
 }
