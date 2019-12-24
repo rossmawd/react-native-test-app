@@ -30,7 +30,7 @@ export default function App() {
     <View style={styles.screen}>
       <View style={styles.inputContainer}>
         <GoalInput getInputHandler={getInputHandler} enteredGoal={enteredGoal} />
-        <Button onPress={addGoalHandler} title="ADD" />
+        <Button onPress={addGoalHandler} title="ADD" color={"red"} />
       </View>
 
       <View />
