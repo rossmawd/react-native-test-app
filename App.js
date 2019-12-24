@@ -22,6 +22,10 @@ export default function App() {
     ]);
   };
 
+  const removeGoalHandler = goalId => {
+    return setCourseGoals(courseGoals.filter(goal => goal.key !== goalId))
+  }
+
   return (
     <View style={styles.screen}>
       <View style={styles.inputContainer}>
@@ -33,7 +37,7 @@ export default function App() {
       <FlatList
         data={courseGoals}
         renderItem={itemData => (<GoalItem value={itemData.item.value}
-          onPress={() => console.log("WHY no worky!")}
+          removeGoalHandler={() => removeGoalHandler(itemData.item.key)}
         />
         )}
       />
