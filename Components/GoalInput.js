@@ -1,13 +1,20 @@
 import React from 'react'
-import { TextInput, StyleSheet } from 'react-native'
+import { TextInput, StyleSheet, Modal, View, Button } from 'react-native'
 
 const GoalInput = (props) => {
-  return <TextInput
-    placeholder="Course Goal"
-    style={styles.input}
-    onChangeText={props.getInputHandler}
-    value={props.enteredGoal}
-  />
+  return (
+    <Modal visible={props.isAddMode}>
+      <View style={styles.input}>
+        <TextInput
+          placeholder="Course Goal"
+
+          onChangeText={props.getInputHandler}
+          value={props.enteredGoal}
+        />
+        <Button onPress={props.addGoalHandler} title="ADD" color={"red"} />
+      </View>
+    </Modal>
+  )
 }
 
 export default GoalInput
