@@ -3,16 +3,15 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 
 const longPress = (event) => {
-  alert("You pressed long")
+  alert("You pressed long!")
+
 }
 
 const GoalItem = props => {
   return (
     <TouchableOpacity
-      underlayColor={'blue'}
       onPress={props.removeGoalHandler}
-      activeOpacity={0.5}
-      onLongPress={(event) => longPress(event)}
+      onLongPress={() => alert("you pressed long!")}
     >
       <View style={styles.listItem}>
         <Text >{props.value}</Text>
@@ -33,3 +32,19 @@ const styles = StyleSheet.create({
     borderWidth: 1
   }
 });
+
+
+{/* <TouchableOpacity
+underlayColor={'blue'}
+onPress={props.removeGoalHandler}
+activeOpacity={0.5}
+onLongPress={(event) => {
+  longPress(event)
+}
+}
+>
+
+<View style={styles.listItem}>
+  <Text >{props.value}</Text>
+</View>
+</TouchableOpacity> */}
