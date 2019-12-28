@@ -21,18 +21,29 @@ export default function App() {
     setCourseGoals(courseGoals => [...courseGoals,
     { key: Math.random().toString(), value: enteredGoal }
     ]);
+    setIsAddMode(false)
+    setEnteredGoal("")
   };
 
   const removeGoalHandler = goalId => {
     return setCourseGoals(courseGoals.filter(goal => goal.key !== goalId))
   }
 
+  const cancelAdd = () => {
+    setIsAddMode(false)
+  }
+
   return (
     <View style={styles.screen}>
       <View style={styles.inputContainer}>
         <Button onPress={() => setIsAddMode(!isAddMode)} title="Add Goal" />
-        <GoalInput isAddMode={isAddMode} getInputHandler={getInputHandler} enteredGoal={enteredGoal} addGoalHandler={addGoalHandler} />
-
+        <GoalInput
+          isAddMode={isAddMode}
+          getInputHandler={getInputHandler}
+          enteredGoal={enteredGoal}
+          addGoalHandler={addGoalHandler}
+          cancelAdd={cancelAdd}
+        />
       </View>
 
       <View />
