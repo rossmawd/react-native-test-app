@@ -52,10 +52,5 @@ const styles = StyleSheet.create({
     padding: 50,
     borderColor: "black",
     borderWidth: 1
-  },
-  inputContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
   }
 });
