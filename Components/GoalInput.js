@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   inputButtons: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "55%"
+    width: "60%"
   },
   button: {
     width: "40%"
