@@ -2,8 +2,6 @@ import React from 'react'
 import { TextInput, StyleSheet, Modal, View, Button } from 'react-native'
 
 const GoalInput = (props) => {
-
-
   return (
     <Modal animationType="slide" visible={props.isAddMode} >
       <View style={styles.inputContainer}>

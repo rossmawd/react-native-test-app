@@ -7,6 +7,7 @@ export default function App() {
   const [enteredGoal, setEnteredGoal] = useState("");
   const [courseGoals, setCourseGoals] = useState([]);
   const [isAddMode, setIsAddMode] = useState(false)
+  console.log("RE-RENDERING component")
 
   function getInputHandler(enteredText) {
     setEnteredGoal(enteredText);
@@ -18,9 +19,13 @@ export default function App() {
   }, [courseGoals]);
 
   const addGoalHandler = () => {
+    if (enteredGoal.length === 0) {
+      return;
+    }
     setCourseGoals(courseGoals => [...courseGoals,
     { key: Math.random().toString(), value: enteredGoal }
     ]);
+
     setIsAddMode(false)
     setEnteredGoal("")
   };
