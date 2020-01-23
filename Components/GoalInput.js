@@ -1,7 +1,21 @@
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { TextInput, StyleSheet, Modal, View, Button } from 'react-native'
+import { useSelector, useDispatch } from 'react-redux'
+import addCourseGoal from '../store/actions/goals'
+
+
 
 const GoalInput = (props) => {
+
+  const dispatch = useDispatch()
+
+
+  const addGoalHandler = useCallback(() => {
+    dispatch(addCourseGoal(props.enteredGoal))
+  }, [dispatch, props.enteredGoal])
+
+
+
   return (
     <Modal animationType="slide" visible={props.isAddMode} >
       <View style={styles.inputContainer}>
@@ -13,7 +27,16 @@ const GoalInput = (props) => {
         />
         <View style={styles.inputButtons}>
           <View style={styles.button}>
-            <Button onPress={props.addGoalHandler} title="ADD" />
+            {/* Change the below to redux from state */}
+            <Button onPress={() => {
+              addGoalHandler()
+              props.setIsAddMode(false)
+              props.setEnteredGoal("")
+            }
+            }
+              title="ADD"
+
+            />
           </View>
           <View style={styles.button}>
             <Button title="CANCEL" color="red" onPress={props.cancelAdd} />

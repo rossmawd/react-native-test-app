@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 const longPress = (event) => {
   alert("You pressed long!")
 }
-
+//enteredGoal in props
 const GoalItem = props => {
   return (
     <TouchableOpacity
