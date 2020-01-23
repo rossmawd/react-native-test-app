@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Button, FlatList } from "react-native";
 import GoalItem from "./Components/GoalItem";
 import GoalInput from "./Components/GoalInput";
+//Redux Stuff
+import goalReducer from './store/reducers/goals';
+import { createStore, combineReducers } from 'redux'
+import { Provider } from 'react-redux';
 
 export default function App() {
   const [enteredGoal, setEnteredGoal] = useState("");
