@@ -7,6 +7,12 @@ import goalReducer from './store/reducers/goals';
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux';
 
+const rootReducer = combineReducers({
+  goals: goalReducer
+})
+
+const store = createStore(rootReducer)
+
 export default function App() {
   const [enteredGoal, setEnteredGoal] = useState("");
   const [courseGoals, setCourseGoals] = useState([]);
@@ -58,27 +64,29 @@ export default function App() {
   };
 
   return (
-    <View style={styles.screen}>
-      <View style={styles.inputContainer}>
-        <Button onPress={() => setIsAddMode(!isAddMode)} title="Add Goal" />
-        <GoalInput
-          isAddMode={isAddMode}
-          getInputHandler={getInputHandler}
-          enteredGoal={enteredGoal}
-          addGoalHandler={addGoalHandler}
-          cancelAdd={cancelAdd}
+    <Provider store={store}>
+      <View style={styles.screen}>
+        <View style={styles.inputContainer}>
+          <Button onPress={() => setIsAddMode(!isAddMode)} title="Add Goal" />
+          <GoalInput
+            isAddMode={isAddMode}
+            getInputHandler={getInputHandler}
+            enteredGoal={enteredGoal}
+            addGoalHandler={addGoalHandler}
+            cancelAdd={cancelAdd}
+          />
+        </View>
+
+        <View />
+        <FlatList
+          data={courseGoals}
+          renderItem={itemData => (<GoalItem value={itemData.item.value}
+            removeGoalHandler={() => removeGoalHandler(itemData.item.key)}
+          />
+          )}
         />
       </View>
-
-      <View />
-      <FlatList
-        data={courseGoals}
-        renderItem={itemData => (<GoalItem value={itemData.item.value}
-          removeGoalHandler={() => removeGoalHandler(itemData.item.key)}
-        />
-        )}
-      />
-    </View>
+    </Provider>
   );
 }
 
