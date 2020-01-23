@@ -1,5 +1,5 @@
+import { ADD_COURSE_GOAL } from '../actions/goals';
 //here have the reducer (state updating) logic for our goals
-
 
 const initialState = {
   courseGoals: []
